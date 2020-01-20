@@ -5,15 +5,15 @@ public class BirthdayTest extends TestSuite {
 
     public Test[] getTests() {
         return new Test[]{
-            new Test("Bad people argument", () -> expectThrows(
+            new Test("A bad people argument", () -> expectThrows(
                 () -> SharedBirthday.probabilityEstimate(1, 2, 1),
                 IllegalArgumentException.class, "At least two people required"
             )),
-            new Test("Bad day argument", () -> expectThrows(
+            new Test("A bad day argument", () -> expectThrows(
                 () -> SharedBirthday.probabilityEstimate(5, 0, 2),
                 IllegalArgumentException.class, "At least one day required"
             )),
-            new Test("Bad trial argument", () -> expectThrows(
+            new Test("A bad trial argument", () -> expectThrows(
                 () -> SharedBirthday.probabilityEstimate(2, 2, -3),
                 IllegalArgumentException.class, "At least one trial required"
             )),

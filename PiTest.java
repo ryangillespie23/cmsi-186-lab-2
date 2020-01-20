@@ -5,14 +5,14 @@ public class PiTest extends TestSuite {
 
     public Test[] getTests() {
         return new Test[]{
-            new Test("Bad darts argument", () -> expectThrows(
+            new Test("Too few darts", () -> expectThrows(
                 () -> PiEstimator.estimate(0),
                 IllegalArgumentException.class, "At least one dart required"
             )),
-            new Test("100 darts should be within 0.9", () -> {
+            new Test("100 darts", () -> {
                 expectWithin(PiEstimator.estimate(100), Math.PI, 0.9);
             }),
-            new Test("1000000 darts should be pretty close", () -> {
+            new Test("1000000 darts", () -> {
               expectWithin(PiEstimator.estimate(1000000), Math.PI, 0.005);
             }),
             new Test("Having no command line arguments", () -> expectStandardErrorToHave(

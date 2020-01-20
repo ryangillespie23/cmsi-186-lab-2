@@ -28,7 +28,7 @@ public abstract class TestSuite {
     }
 
     void expectWithin(double value, double expected, double tolerance) {
-        System.out.print(" is within " + tolerance + " of " + expected);
+        System.out.print(" should be within " + tolerance + " of " + expected);
         expect(Math.abs(expected - value) <= tolerance, "BUT GOT " + value);
     }
 
