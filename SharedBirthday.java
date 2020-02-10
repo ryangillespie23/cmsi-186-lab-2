@@ -1,3 +1,4 @@
+import java.util.*;
 public class SharedBirthday {
 
     public static void main(String[] args) {
@@ -17,15 +18,29 @@ public class SharedBirthday {
     }
 
     public static double probabilityEstimate(int people, int days, int trials) {
-        //
-        // TODO: Do the main work here. I've just returned 0.0 as a place holder
-        // so the code compiles. It isn't right though. Remove the return here and
-        // implement the whole method on your own.
-        //
-        return 0.0;
-    }
+       if (people < 2){
+           throw new IllegalArgumentException("At least two people required");
+       }
 
-    //
-    // TODO: Don't be afraid to write private helper methods to keep your code modular.
-    //
+       if (days < 1){
+           throw new IllegalArgumentException("At least one day required");
+       }
+       if (trials < 1){
+           throw new IllegalArgumentException("At least one trial required");
+       }
+
+   int shared = 0;
+      for (int i = 0; i < trials; i++) {
+        ArrayList<Double> daysUsed = new ArrayList<>();
+        for (int j = 0; j < people; j++) {
+          double bday = (int)(Math.random() * days);
+          if(daysUsed.contains(bday)){
+            shared++;
+            break;
+          }
+          daysUsed.add(bday);
+        }
+      }
+    return (double)shared / (double)(trials);
+    }
 }
